@@ -1,0 +1,50 @@
+# =========================
+# General
+# =========================
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.development
+.env.production
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Vite (Frontend)
+# =========================
+.vite/
+.vitepress/
+*.local
+
+# Cache folders
+.cache/
+temp/
+tmp/
+
+# Optional OS/Editor files
+*.swp
+*.swo
+*.bak
+.idea/
+.vscode/
+
+# =========================
+# Backend (Node/Express)
+# =========================
+/backend/node_modules/
+/backend/.env
+/backend/logs
+/backend/debug.log
+
+# =========================
+# Frontend (React/Vite)
+# =========================
+/frontend/e-commerce_project/node_modules/
+/frontend/e-commerce_project/dist/
+/frontend/e-commerce_project/.env
+/frontend/e-commerce_project/.DS_Store
