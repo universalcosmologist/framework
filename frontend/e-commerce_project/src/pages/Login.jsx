@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useProductContext } from "../../contexts/ProductContext";
 
 function Login() {
+  const url=import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const { setFresh } = useProductContext();
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function Login() {
     }
     const urlEncodedData = new URLSearchParams(formData).toString();
     try {
-      const response = await fetch("http://localhost:8000/users/login", {
+      const response = await fetch(`${url}/users/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

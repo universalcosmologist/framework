@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 const ProductCard = ({ product }) => {
   // Function to render star ratings
+  const url=import.meta.env.VITE_API_URL;
   //send the request to backend with this produt id and token alogwith
   //we need to use async await to hndle the response of async function
   const token=localStorage.getItem('token');
@@ -25,7 +26,7 @@ const ProductCard = ({ product }) => {
 
   const add_in_cart=async(product_id)=>{
       try {
-        const res=await fetch('http://localhost:8000/cart',{
+        const res=await fetch(`${url}/cart`,{
           method:"POST",
           headers:{
             'Content-Type':'application/json',
@@ -44,7 +45,7 @@ const ProductCard = ({ product }) => {
 
   const check_already_exist=async(product_id)=>{
       try {
-        const res=await fetch(`http://localhost:8000/cart/check?product_id=${product_id}`,{
+        const res=await fetch(`${url}/cart/check?product_id=${product_id}`,{
           method:"GET",
           headers:{
             "Authorization":`Bearer ${token}`,

@@ -6,6 +6,7 @@ import {  useDispatch } from 'react-redux';
 //set a sort of form so that small updates are not send to backend only when user clicks on button then send reuest to backend
 //now remove feature is left
 function Cart_component({cart_item,onRefresh}) {
+  const url=import.meta.env.VITE_API_URL;
   const [quantity,setQuantity]=useState(1);
   const token=localStorage.getItem('token');
   const dispatch=useDispatch();
@@ -13,7 +14,7 @@ function Cart_component({cart_item,onRefresh}) {
   const handleDelete=async()=>{
     if(token){
       try {
-        const response=await fetch(`http://localhost:8000/cart/delete/${cart_item._id}`,{
+        const response=await fetch(`${url}/cart/delete/${cart_item._id}`,{
           method:"DELETE",
           headers:{
             'Authorization':`Bearer ${token}`,
@@ -36,7 +37,7 @@ function Cart_component({cart_item,onRefresh}) {
      if(token){
        try {
 
-        const response=await fetch(`http://localhost:8000/cart/update/${cart_item._id}`,{
+        const response=await fetch(`${url}/cart/update/${cart_item._id}`,{
           method:'PATCH',
           headers:{
             'Authorization':`Bearer ${token}`,

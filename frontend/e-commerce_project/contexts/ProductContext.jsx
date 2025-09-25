@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
+    const url=import.meta.env.VITE_API_URL;
     const [data, setData] = useState(null);
     const [fresh, setFresh] = useState(false);
     const token=localStorage.getItem('token');
@@ -12,7 +13,7 @@ export const ProductProvider = ({ children }) => {
       if (!fresh && token) {
         console.log("hello refetching");
         const fetchData = async () => {
-          const res=await fetch('http://localhost:8000/products',{
+          const res=await fetch(`${url}/products`,{
             method:"GET",
             headers:{
                 'Authorization':`Bearer ${token}`,

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 function Sign_Up() {
   const dispatch=useDispatch();
+  const url=import.meta.env.VITE_API_URL;
   const navigate=useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -54,7 +55,7 @@ function Sign_Up() {
 
     const urlEncodedData = new URLSearchParams(formData).toString();
     try {
-      const response = await fetch("http://localhost:8000/users", {
+      const response = await fetch(`${url}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

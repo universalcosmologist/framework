@@ -7,6 +7,7 @@ import { addMessage,hideMessage } from '../Slices/alertSlice';
 //this page helps to modify the product add the ratings and all and check who can which product
 
 function ViewProduct() {
+  const url=import.meta.env.VITE_API_URL;
   const dispatch=useDispatch();
   const location=useLocation();
   const {setFresh}=useProductContext();
@@ -36,7 +37,7 @@ function ViewProduct() {
       }
       const numeric_price=Number(price);
       try {
-        const response=await fetch(`http://localhost:8000/products/update`,{
+        const response=await fetch(`${url}/products/update`,{
         method:"PATCH",
         headers:{
           'Authorization':`Bearer ${token}`,

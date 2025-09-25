@@ -2,6 +2,7 @@ import React,{useEffect} from 'react'
 
 function Profile() {
   const token=localStorage.getItem('token');
+  const url=import.meta.env.VITE_API_URL;
   const [item,setItem]=React.useState(null);
 
   useEffect(()=>{
@@ -21,7 +22,7 @@ function Profile() {
   const fetch_user=async()=>{
     try {
     console.log("performing fetch now");
-    const res=await fetch('http://localhost:8000/users/profile',{
+    const res=await fetch(`${url}/users/profile`,{
         method:"GET",
         headers:{
             'Authorization':`Bearer ${token}`,

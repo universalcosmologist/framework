@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 
 export default function Product() {
   const [loading,setLoading]=useState(false);
+  const url=import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -67,7 +68,7 @@ export default function Product() {
     try {
       const file = formData.image_file;
       const response = await fetch(
-        `http://localhost:8000/image/generate_url?fileName=${file.name}&fileType=${file.type}`,
+        `${url}/image/generate_url?fileName=${file.name}&fileType=${file.type}`,
         {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
@@ -88,7 +89,7 @@ export default function Product() {
         return;
       }
 
-      const product_creation_response = await fetch("http://localhost:8000/products", {
+      const product_creation_response = await fetch(`${url}/products`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

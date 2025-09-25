@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import Cart_component from '../Components/Cart_component';
+const url=import.meta.env.VITE_API_URL;
 
 function Cart() {
   const [cart_items,setCart_items]=React.useState(null);
@@ -10,7 +11,7 @@ function Cart() {
     if(token){
       try {
 
-        const res=await fetch('http://localhost:8000/cart',{
+        const res=await fetch(`${url}/cart`,{
           method:"GET",
           headers:{
           'Authorization':`Bearer ${token}`,
