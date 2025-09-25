@@ -15,7 +15,7 @@ connectDB();
 const app=express();
 
 app.use(cors({
-  origin: 'http://localhost:5173', 
+  origin: '*', 
     credentials: true,
    allowedHeaders: ['Content-Type', 'Authorization'], // ALLOW Authorization header
 }));
