@@ -3,6 +3,13 @@ import React,{useEffect} from 'react'
 function Profile() {
   const token=localStorage.getItem('token');
   const [item,setItem]=React.useState(null);
+
+  useEffect(()=>{
+  if(token){
+  fetch_user();
+  }
+  },[token]);
+
   if(!token){
     return (
         <div>
@@ -29,12 +36,6 @@ function Profile() {
         console.log("fetch error occured in fetch_user function",error);
     }
   }
-  
-  useEffect(()=>{
-   if(token){
-     fetch_user();
-   }
-  },[]);
 
   if(item){
     return (

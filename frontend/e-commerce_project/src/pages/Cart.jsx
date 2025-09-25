@@ -31,33 +31,33 @@ function Cart() {
   }
 
   useEffect(()=>{
-     fetch_item();
-  },[])
+    fetch_item();
+  },[]);
 
   useEffect(()=>{
     if(cart_items && Array.isArray(cart_items)){
       const price=cart_items.reduce((sum,item)=>{
         return (sum+((item.product.price ?? 0)*(item.quantity ?? 1)))
       },0);
-      setTotal_cart_price(price);
+      setTotal_cart_price(parseFloat(price.toFixed(2)));
     }
   },[cart_items]);
 
   if(!cart_items){
     return (
-      <div className='text-white text-xl'>Login to view your Cart</div>
+      <div className='text-gray-800 text-xl'>Login to view your Cart</div>
     )
   }
   return (
-   <div>
-     <div>
+  <div>
+    <div>
         {cart_items && cart_items.map((cart_item,index)=>
             <Cart_component key={index} cart_item={cart_item} onRefresh={fetch_item}/>
         )}
     </div>
-    {(cart_items.length>0 && total_cart_price>0) ?  <p className='text-xl text-white'>Total Amount To Pay: {total_cart_price}</p> : <p></p>}
-    {cart_items.length==0 && <p className='text-white text-2xl'>Wow! such empty</p>}
-   </div>
+    {(cart_items.length>0 && total_cart_price>0) ?  <p className='text-xl text-gray-800'>Total Amount To Pay: {total_cart_price}</p> : <p></p>}
+    {cart_items.length==0 && <p className='text-gray-800 text-2xl'>Wow! such empty</p>}
+  </div>
   )
 
 }

@@ -1,6 +1,7 @@
 import { addMessage,hideMessage } from "../Slices/alertSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const ProductCard = ({ product }) => {
   // Function to render star ratings
@@ -88,8 +89,8 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="bg-black min-h-screen flex items-center justify-center p-4">
-      <div className="bg-gray-900 text-white rounded-2xl shadow-lg p-6 max-w-sm w-full">
+    <div className="bg-red-200 min-h-screen flex items-center justify-center p-4">
+      <div className="bg-gray-700 text-white rounded-2xl shadow-lg p-6 max-w-sm w-full">
         <img 
           src={product.image_url}
           alt={product.title}
@@ -129,6 +130,20 @@ const ProductCard = ({ product }) => {
       </div>
     </div>
   );
+};
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    _id: PropTypes.string,
+    image_url: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.number,
+    category: PropTypes.string,
+    rating: PropTypes.shape({
+      rate: PropTypes.number,
+      count: PropTypes.number,
+    }),
+  }).isRequired,
 };
 
 export default ProductCard;

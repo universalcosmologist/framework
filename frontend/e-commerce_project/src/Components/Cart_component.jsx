@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
+import PropTypes from 'prop-types';
 import { addMessage,hideMessage } from '../Slices/alertSlice'; 
 import {  useDispatch } from 'react-redux';
 //we have to make quantity editable
@@ -128,5 +129,9 @@ function Cart_component({cart_item,onRefresh}) {
   
   )
 }
+Cart_component.propTypes = {
+  cart_item: PropTypes.object.isRequired,
+  onRefresh: PropTypes.func.isRequired,
+};
 
 export default Cart_component

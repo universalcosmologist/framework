@@ -9,12 +9,14 @@ import AlertComponent from './Components/AlertComponent.jsx';
 import { ProductProvider } from '../contexts/ProductContext.jsx';
 
 createRoot(document.getElementById('root')).render(
-  <ProductProvider>
-     <Provider store={store}>
+  <StrictMode>
+    <ProductProvider>
+    <Provider store={store}>
     <BrowserRouter>
     <AlertComponent/>
     <App />
     </BrowserRouter>
     </Provider>
   </ProductProvider>
+  </StrictMode>
 )

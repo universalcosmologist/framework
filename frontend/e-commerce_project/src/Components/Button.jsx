@@ -1,14 +1,31 @@
-import React from 'react'
-//until overridden className is none
-function Button({children,onClick,className=""}) {
+// Components/Button.jsx
+import PropTypes from "prop-types";
+
+export default function Button({ children, onClick, type = "button", variant = "primary" }) {
+  const base =
+    "px-4 py-2 rounded-md font-medium transition duration-200 focus:outline-none";
+
+  const styles = {
+    primary: "bg-blue-600 text-white hover:bg-blue-700",
+    secondary: "bg-gray-100 text-gray-700 hover:bg-gray-200 border",
+    danger: "bg-red-600 text-white hover:bg-red-700",
+    outline: "border border-gray-400 text-gray-700 hover:bg-gray-100",
+  };
+
   return (
-      <button
+    <button
+      type={type}
       onClick={onClick}
-      className={`bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-800 px-5 py-2 rounded-md font-semibold transition duration-200 ease-in-out ${className}`}
+      className={`${base} ${styles[variant]}`}
     >
       {children}
     </button>
-  )
+  );
 }
 
-export default Button
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+  variant: PropTypes.oneOf(["primary", "secondary", "danger", "outline"]),
+};
