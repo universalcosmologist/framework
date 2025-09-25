@@ -18,7 +18,7 @@ router.get('/generate_url',async(req,res)=>{
     const {fileName,fileType}=req.query;
     const bucket_name=process.env.AWS_S3_BUCKET_NAME;
     if(!fileName || !fileType){
-        return res.status(400).json({meesage:'file name and file type are missing'});
+        return res.status(400).json({message:'file name and file type are missing'});
     }
     try {
         const key=`uploads/${Date.now()}/${fileName}`;
